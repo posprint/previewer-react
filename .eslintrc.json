@@ -1,0 +1,11 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "script"
+  },
+  "extends": [
+    "eslint:recommended",
+    "standard",
+    "plugin:prettier/recommended"
+  ]
+}

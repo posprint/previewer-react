@@ -1,0 +1,43 @@
+{
+  "name": "pos-print-previewer-react",
+  "version": "1.0.0",
+  "description": "Previewer of hyrdated DOM for POS Print.",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sloth-dance/previewer-react.git"
+  },
+  "keywords": [
+    "Previewer",
+    "React",
+    "POS",
+    "Print",
+    "ESC",
+    "TSC"
+  ],
+  "author": "Halbert Lei <princescar@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sloth-dance/previewer-react/issues"
+  },
+  "homepage": "https://github.com/sloth-dance/previewer-react#readme",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "camelcase": "^6.0.0",
+    "qrcode": "^1.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-qrcode": "^0.2.5"
+  }
+}
