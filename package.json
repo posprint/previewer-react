@@ -2,7 +2,7 @@
   "name": "pos-print-previewer-react",
   "version": "1.0.0",
   "description": "Previewer of hyrdated DOM for POS Print.",
-  "main": "lib/index.js",
+  "main": "lib/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sloth-dance/previewer-react.git"
