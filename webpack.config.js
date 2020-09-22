@@ -1,19 +1,23 @@
 const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-
-const plugins = [];
-
-if (process.env.NODE_ANALYZE) {
-  plugins.push(new BundleAnalyzerPlugin());
-}
 
 module.exports = {
   mode: 'production',
   entry: './src/index',
   output: {
-    path: path.resolve(__dirname, 'lib'),
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'previewer-react.js',
+    library: 'PosPrintPreviewerReact',
     libraryTarget: 'umd',
+    globalObject: 'this',
+  },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+    },
   },
   module: {
     rules: [
@@ -50,7 +54,6 @@ module.exports = {
       },
     ],
   },
-  plugins,
   devtool: 'source-map',
   optimization: {
     minimizer: [
