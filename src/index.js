@@ -2,7 +2,10 @@ import React from 'react';
 import Element from './tags/element';
 
 export default function (props) {
-  const { attributes, elementName, children } = props.dom;
+  const { dom, selectedSection, onSectionSelect } = props;
+  const { attributes, elementName, children } = dom;
+
+  console.log('onSectionSelect', onSectionSelect);
 
   const style = {
     padding: '16px',
@@ -36,7 +39,15 @@ export default function (props) {
   return (
     <div style={style}>
       {children &&
-        children.map((node, i) => <Element key={i} isa={isa} node={node} />)}
+        children.map((node, i) => (
+          <Element
+            key={i}
+            isa={isa}
+            node={node}
+            selectedSection={selectedSection}
+            onSectionSelect={onSectionSelect}
+          />
+        ))}
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default class extends Component {
   };
 
   render() {
-    const { isa, node } = this.props;
+    const { isa, node, selectedSection, onSectionSelect } = this.props;
 
     const type = typeof node;
     if (type === 'string') {
@@ -44,7 +44,14 @@ export default class extends Component {
       });
 
       if (Comp) {
-        return <Comp {...props} children={children} />;
+        return (
+          <Comp
+            {...props}
+            children={children}
+            selectedSection={selectedSection}
+            onSectionSelect={onSectionSelect}
+          />
+        );
       } else {
         throw new Error(`unexpected element: ${elementName}`);
       }
