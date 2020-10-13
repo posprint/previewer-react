@@ -8,6 +8,7 @@ import Command from './command';
 import Img from './img';
 import Qrcode from './qrcode';
 import TscText from './tsc-text';
+import Section from './section';
 
 export default class extends Component {
   components = {
@@ -19,6 +20,7 @@ export default class extends Component {
       command: Command,
       img: Img,
       qrcode: Qrcode,
+      section: Section,
     },
     tsc: {
       text: TscText,
