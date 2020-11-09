@@ -17,13 +17,19 @@ export default class extends Component {
   scale() {
     const div = this.divRef.current;
 
+    // 复制节点并挂载，修复Ionic下React生命周期不加载的问题
+    const div2 = div.cloneNode(true);
+    document.body.appendChild(div2);
+
     // 先还原到未缩放状态
+    div.style.display = 'block';
     div.style.paddingBottom = '';
     div.style.width = '100%';
     div.style.transform = '';
     div.style.transformOrigin = '';
 
     const { fontSize } = this.props;
+    console.log('fontSize', fontSize);
 
     if (fontSize) {
       switch (fontSize) {
@@ -36,8 +42,10 @@ export default class extends Component {
           break;
       }
 
+      // setTimeout(() => {
       // 拿到原始高度
-      const initialHeight = div.offsetHeight;
+      const initialHeight = div2.offsetHeight;
+      console.log('initialHeight', initialHeight);
 
       switch (fontSize) {
         case 'wide':
@@ -60,7 +68,10 @@ export default class extends Component {
         default:
           break;
       }
+      // }, 1000);
     }
+
+    document.body.removeChild(div2);
   }
 
   render() {
