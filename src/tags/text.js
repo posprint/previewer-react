@@ -17,16 +17,16 @@ export default class extends Component {
   scale() {
     const div = this.divRef.current;
 
-    // 复制节点并挂载，修复Ionic下React生命周期不加载的问题
-    const div2 = div.cloneNode(true);
-    document.body.appendChild(div2);
-
     // 先还原到未缩放状态
     div.style.display = 'block';
     div.style.paddingBottom = '';
     div.style.width = '100%';
     div.style.transform = '';
     div.style.transformOrigin = '';
+
+    // 复制节点并挂载，修复Ionic下React生命周期不加载的问题
+    const div2 = div.cloneNode(true);
+    document.body.appendChild(div2);
 
     const { fontSize } = this.props;
     console.log('fontSize', fontSize);
