@@ -28,11 +28,8 @@ export default function (props) {
 
   if (isa === 'tsc') {
     Object.assign(style, {
-      margin: '20px auto',
-      borderRadius: '6px',
       padding: '8px',
-      width: '184px',
-      boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.2)',
+      lineHeight: '10px',
     });
   }
 
