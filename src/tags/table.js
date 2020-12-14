@@ -20,6 +20,7 @@ function Row(props) {
   return (
     <tr>
       {children &&
+        typeof children.map === 'function' &&
         children.map((td, i) => (
           <Cell
             key={i}
@@ -99,6 +100,7 @@ export default function (props) {
     <table style={style}>
       <tbody>
         {children &&
+          typeof children.map === 'function' &&
           children.map((tr, i) => (
             <Row
               key={i}
