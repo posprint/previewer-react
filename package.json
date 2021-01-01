@@ -1,17 +1,18 @@
 {
   "name": "@posprint/previewer-react",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Previewer of hyrdated DOM for POS Print.",
   "main": "dist/previewer-react.js",
+  "module": "src/index.jsx",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sloth-dance/previewer-react.git"
+    "url": "git+https://github.com/posprint/previewer-react.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sloth-dance/previewer-react/issues"
+    "url": "https://github.com/posprint/previewer-react/issues"
   },
-  "homepage": "https://github.com/sloth-dance/previewer-react#readme",
+  "homepage": "https://github.com/posprint/previewer-react#readme",
   "browserslist": {
     "production": [
       ">0.2%",

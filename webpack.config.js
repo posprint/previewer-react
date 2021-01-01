@@ -19,6 +19,9 @@ module.exports = {
       amd: 'react',
     },
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       // {
@@ -28,7 +31,7 @@ module.exports = {
       //   loader: 'eslint-loader',
       // },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
           options: {

@@ -21,15 +21,10 @@ export default class extends Component {
     div.style.display = 'block';
     div.style.paddingBottom = '';
     div.style.width = '100%';
+    div.style.transformOrigin = 'left top';
     div.style.transform = '';
-    div.style.transformOrigin = '';
-
-    // 复制节点并挂载，修复Ionic下React生命周期不加载的问题
-    const div2 = div.cloneNode(true);
-    document.body.appendChild(div2);
 
     const { fontSize } = this.props;
-    console.log('fontSize', fontSize);
 
     if (fontSize) {
       switch (fontSize) {
@@ -37,41 +32,23 @@ export default class extends Component {
         case 'wide-high':
           // 设定宽度
           div.style.width = '50%';
+          div.style.transform += ' scaleX(2)';
           break;
         default:
           break;
       }
-
-      // setTimeout(() => {
-      // 拿到原始高度
-      const initialHeight = div2.offsetHeight;
-      console.log('initialHeight', initialHeight);
 
       switch (fontSize) {
-        case 'wide':
-          div.style.transform = 'scaleX(2)';
-          div.style.transformOrigin = 'left top';
-          break;
         case 'high':
-          // 使用padding-bottom填充transform产生的新的高度
-          div.style.paddingBottom = `${initialHeight}px`;
-          div.style.transform = 'scaleY(2)';
-          div.style.transformOrigin = 'left top';
-          break;
         case 'wide-high':
           // 使用padding-bottom填充transform产生的新的高度
-          div.style.paddingBottom = `${initialHeight}px`;
-          div.style.transform = 'scale(2)';
-          div.style.transformOrigin = 'left top';
+          div.style.paddingBottom = `${div.offsetHeight}px`;
+          div.style.transform += ' scaleY(2)';
           break;
-        case 'normal':
         default:
           break;
       }
-      // }, 1000);
     }
-
-    document.body.removeChild(div2);
   }
 
   render() {
@@ -100,9 +77,11 @@ export default class extends Component {
     }
 
     const style = {
-      wordBreak: 'break-all',
+      whiteSpace: 'pre-wrap',
+      wordBreak: 'break-word',
       minHeight: '1em',
       width: '100%',
+      overflow: 'hidden',
     };
 
     if (align) {
@@ -113,9 +92,7 @@ export default class extends Component {
       <div
         ref={this.divRef}
         style={style}
-        dangerouslySetInnerHTML={{
-          __html: text && text.replace(/\s/g, '&nbsp;'),
-        }}
+        dangerouslySetInnerHTML={{ __html: text }}
       />
     );
   }
