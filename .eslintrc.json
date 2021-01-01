@@ -2,11 +2,21 @@
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2019,
+    "ecmaFeatures": {
+      "jsx": true
+    },
     "sourceType": "module"
   },
+  "plugins": [
+    "react"
+  ],
   "extends": [
     "eslint:recommended",
     "standard",
     "plugin:prettier/recommended"
-  ]
+  ],
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error"
+  }
 }
