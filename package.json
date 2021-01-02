@@ -1,9 +1,8 @@
 {
   "name": "@posprint/previewer-react",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Previewer of hyrdated DOM for POS Print.",
-  "main": "umd/previewer.js",
-  "module": "es/index.js",
+  "module": "build/index.js",
   "files": [
     "dist",
     "es"
@@ -30,20 +29,14 @@
     ]
   },
   "scripts": {
-    "build": "npm run build:umd && npm run build:es",
-    "build:umd": "npm run clean:umd && webpack --config webpack.config.js",
-    "build:es": "npm run clean:es && babel src --extensions '.js,.jsx' --out-dir es",
-    "clean": "npm run clean:umd && npm run clean:es",
-    "clean:umd": "rm -rf umd",
-    "clean:es": "rm -rf es",
+    "build": "rm -rf build && webpack --config webpack.config.js",
     "lint": "eslint ./src/**/*.jsx",
-    "analyze": "source-map-explorer 'dist/*.js'"
+    "analyze": "source-map-explorer 'build/*.js'"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
@@ -62,8 +55,8 @@
     "eslint-plugin-react": "^7.22.0",
     "prettier": "^2.2.1",
     "qrcode": "^1.4.4",
+    "qrcode.react": "^1.0.1",
     "react": "^17.0.1",
-    "react-qrcode": "^0.2.5",
     "source-map-explorer": "^2.5.1",
     "terser-webpack-plugin": "^5.0.3",
     "webpack": "^5.11.1",

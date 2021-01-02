@@ -5,11 +5,9 @@ module.exports = {
   mode: 'production',
   entry: './src/index',
   output: {
-    path: path.resolve(__dirname, 'umd'),
-    filename: 'previewer.js',
-    library: 'Previewer',
-    libraryTarget: 'umd',
-    globalObject: 'this',
+    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
+    libraryTarget: 'commonjs2',
   },
   externals: {
     react: {
