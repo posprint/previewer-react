@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "@babel/preset-react",
+      {
+        "modules": false,
+        "targets": {
+          "browsers": [
+            "ios >= 4",
+            "android >=4",
+            "ie >=11"
+          ]
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": true
+      }
+    ]
+  ]
+}

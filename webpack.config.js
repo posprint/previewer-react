@@ -5,9 +5,9 @@ module.exports = {
   mode: 'production',
   entry: './src/index',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'previewer-react.js',
-    library: 'PosPrintPreviewerReact',
+    path: path.resolve(__dirname, 'umd'),
+    filename: 'previewer.js',
+    library: 'Previewer',
     libraryTarget: 'umd',
     globalObject: 'this',
   },
@@ -26,34 +26,13 @@ module.exports = {
     rules: [
       // {
       //   enforce: 'pre',
-      //   test: /\.js$/,
+      //   test: /\.jsx?$/,
       //   exclude: /node_modules/,
       //   loader: 'eslint-loader',
       // },
       {
         test: /\.jsx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-react',
-                {
-                  modules: false,
-                  targets: {
-                    browsers: ['ios >= 4', 'android >=4', 'ie >=11'],
-                  },
-                },
-              ],
-            ],
-            plugins: [
-              [
-                require('@babel/plugin-proposal-class-properties'),
-                { loose: true },
-              ],
-            ],
-          },
-        },
+        use: { loader: 'babel-loader' },
       },
     ],
   },

@@ -1,9 +1,13 @@
 {
   "name": "@posprint/previewer-react",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Previewer of hyrdated DOM for POS Print.",
-  "main": "dist/previewer-react.js",
-  "module": "src/index.jsx",
+  "main": "umd/previewer.js",
+  "module": "es/index.js",
+  "files": [
+    "dist",
+    "es"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/posprint/previewer-react.git"
@@ -26,14 +30,20 @@
     ]
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "lint": "eslint ./src/**/*.js",
+    "build": "npm run build:umd && npm run build:es",
+    "build:umd": "npm run clean:umd && webpack --config webpack.config.js",
+    "build:es": "npm run clean:es && babel src --extensions '.js,.jsx' --out-dir es",
+    "clean": "npm run clean:umd && npm run clean:es",
+    "clean:umd": "rm -rf umd",
+    "clean:es": "rm -rf es",
+    "lint": "eslint ./src/**/*.jsx",
     "analyze": "source-map-explorer 'dist/*.js'"
   },
   "peerDependencies": {
     "react": ">=16.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-class-properties": "^7.12.1",
     "@babel/preset-env": "^7.12.11",

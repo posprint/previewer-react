@@ -9,7 +9,8 @@
 /coverage
 
 # production
-/build
+/es
+/umd
 
 # misc
 .DS_Store
