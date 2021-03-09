@@ -84,16 +84,23 @@ export default class extends Component {
       overflow: 'hidden',
     };
 
+    const spanStyle = {
+      display: 'inline-block',
+    };
+
     if (align) {
       style.textAlign = align;
     }
 
+    if (color === 'reverse') {
+      spanStyle.color = '#fff';
+      spanStyle.backgroundColor = '#000';
+    }
+
     return (
-      <div
-        ref={this.divRef}
-        style={style}
-        dangerouslySetInnerHTML={{ __html: text }}
-      />
+      <div ref={this.divRef} style={style}>
+        <span style={spanStyle} dangerouslySetInnerHTML={{ __html: text }} />
+      </div>
     );
   }
 }
