@@ -93,6 +93,10 @@ export default class extends Component {
     }
 
     if (color === 'reverse') {
+      spanStyle.width = '100%';
+      spanStyle.color = '#fff';
+      spanStyle.backgroundColor = '#000';
+    } else if (color === 'reverse-block') {
       spanStyle.color = '#fff';
       spanStyle.backgroundColor = '#000';
     }
