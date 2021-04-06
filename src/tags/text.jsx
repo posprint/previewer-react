@@ -82,10 +82,11 @@ export default class extends Component {
       minHeight: '1em',
       width: '100%',
       overflow: 'hidden',
+      overflowWrap: 'break-word'
     };
 
     const spanStyle = {
-      display: 'inline-block',
+      display: 'inline-block'
     };
 
     if (align) {
