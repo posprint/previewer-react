@@ -25,7 +25,8 @@ export default function (props) {
   }
 
   const style = {
-    wordBreak: 'break-all',
+    wordBreak: 'break-word',
+    overflowWrap: 'break-word'
   };
 
   if (align) {
@@ -57,7 +58,8 @@ export default function (props) {
     <div
       style={style}
       dangerouslySetInnerHTML={{
-        __html: text && text.replace(/\s/g, '&nbsp;'),
+        __html: text,
+        // __html: text && text.replace(/\s/g, '&nbsp;'),
       }}
     />
   );
