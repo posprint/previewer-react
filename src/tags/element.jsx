@@ -23,7 +23,7 @@ export default class extends Component {
       section: Section,
     },
     tsc: {
-      text: TscText,
+      text: Text,
       separator: Separator,
     },
   };

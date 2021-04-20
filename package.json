@@ -1,6 +1,6 @@
 {
   "name": "@posprint/previewer-react",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "Previewer of hyrdated DOM for POS Print.",
   "main": "build/index.js",
   "files": [
