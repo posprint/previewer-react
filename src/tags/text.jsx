@@ -44,6 +44,7 @@ export default class extends Component {
           // 使用padding-bottom填充transform产生的新的高度
           div.style.paddingBottom = `${div.offsetHeight}px`;
           div.style.transform += ' scaleY(2)';
+          div.style.lineHeight = '14px';
           break;
         default:
           break;
@@ -91,6 +92,12 @@ export default class extends Component {
 
     if (align) {
       style.textAlign = align;
+    }
+
+    if (fontSize && Number.isInteger(parseInt(fontSize))) {
+      const size = parseInt(fontSize);
+      style.fontSize = size + 'px';
+      style.lineHeight = size * 1.3 + 'px';
     }
 
     if (color === 'reverse') {
