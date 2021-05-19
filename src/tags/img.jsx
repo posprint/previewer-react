@@ -7,9 +7,13 @@ export default function (props) {
     textAlign: align,
   };
 
+  const imgStyle = {
+    maxWidth: '100%',
+  };
+
   return (
     <div style={style}>
-      <img src={`data:image/${format};base64,${children}`} />
+      <img style={imgStyle} src={`data:image/${format};base64,${children}`} />
     </div>
   );
 }
