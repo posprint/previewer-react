@@ -83,7 +83,8 @@ export default class extends Component {
       minHeight: '1em',
       width: '100%',
       overflow: 'hidden',
-      overflowWrap: 'break-word'
+      overflowWrap: 'break-word',
+      letterSpacing: '0.1px',
     };
 
     const spanStyle = {
