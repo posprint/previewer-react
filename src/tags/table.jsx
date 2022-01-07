@@ -1,5 +1,5 @@
 import React from 'react';
-import camelCase from 'camelcase';
+import humps from 'humps';
 
 import Text from './text';
 
@@ -10,7 +10,7 @@ function Row(props) {
   const trProps = {};
   if (attributes) {
     Object.keys(attributes).forEach(key => {
-      trProps[camelCase(key)] = attributes[key];
+      trProps[humps.camelize(key)] = attributes[key];
     });
   }
   const rowProps = Object.assign({ ...rest }, tableProps, trProps);
@@ -42,7 +42,7 @@ function Cell(props) {
   const tdProps = {};
   if (attributes) {
     Object.keys(attributes).forEach(key => {
-      tdProps[camelCase(key)] = attributes[key];
+      tdProps[humps.camelize(key)] = attributes[key];
     });
   }
   const cellProps = Object.assign({ ...rest }, rowProps, tdProps);

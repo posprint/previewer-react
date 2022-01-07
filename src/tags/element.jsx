@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import camelCase from 'camelcase';
+import humps from 'humps';
 import Blank from './blank';
 import Text from './text';
 import Separator from './separator';
@@ -9,6 +9,7 @@ import Img from './img';
 import Qrcode from './qrcode';
 import TscText from './tsc-text';
 import Section from './section';
+import BarCode from './barcode';
 
 export default class extends Component {
   components = {
@@ -21,6 +22,7 @@ export default class extends Component {
       img: Img,
       qrcode: Qrcode,
       section: Section,
+      barcode: BarCode
     },
     tsc: {
       text: Text,
@@ -40,7 +42,7 @@ export default class extends Component {
 
       const props = {};
       Object.keys(attributes).forEach(key => {
-        props[camelCase(key)] = attributes[key];
+        props[humps.camelize(key)] = attributes[key];
       });
 
       if (Comp) {

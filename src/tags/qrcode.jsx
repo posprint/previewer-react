@@ -7,10 +7,11 @@ export default function (props) {
   const style = {
     textAlign: align || 'center',
   };
+  const width = size === 'normal' ? 80 : 160
 
   return (
     <div style={style}>
-      <QRCode size={160} value={children || ''} level={level} />
+      <QRCode size={width} value={children || ''} level={level} />
     </div>
   );
 }

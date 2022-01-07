@@ -1,14 +1,14 @@
 import React from 'react';
 
 export default function (props) {
-  const { format, height, width, align, children } = props;
+  const { format, height, width, size, align, children } = props;
 
   const style = {
     textAlign: align,
   };
 
   const imgStyle = {
-    maxWidth: '100%',
+    maxWidth: size === 'normal' ? '50%' : '100%',
   };
 
   return (
