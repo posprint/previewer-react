@@ -27,6 +27,7 @@ export default class extends Component {
     tsc: {
       text: Text,
       separator: Separator,
+      qrcode: Qrcode,
     },
   };
 
@@ -40,7 +41,7 @@ export default class extends Component {
       const { elementName, attributes, children } = node;
       const Comp = this.components[isa][elementName];
 
-      const props = {};
+      const props = { isa };
       Object.keys(attributes).forEach(key => {
         props[humps.camelize(key)] = attributes[key];
       });
