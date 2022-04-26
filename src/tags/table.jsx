@@ -47,12 +47,13 @@ function Cell(props) {
   }
   const cellProps = Object.assign({ ...rest }, rowProps, tdProps);
 
-  const { width, align, overflow } = cellProps;
+  const { width, align, overflow, left } = cellProps;
 
   const style = {
     margin: 0,
     padding: 0,
     verticalAlign: 'top',
+    left
   };
   if (width) {
     style.width = `${width}%`;

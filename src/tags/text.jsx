@@ -56,6 +56,7 @@ export default class extends Component {
     const {
       marginPosition,
       marginSize,
+      left,
       align,
       fontStyle,
       fontSize,
@@ -85,6 +86,7 @@ export default class extends Component {
       overflow: 'hidden',
       overflowWrap: 'break-word',
       letterSpacing: '0.1px',
+      marginLeft: `${(left || 0) * 7}px`
     };
 
     const spanStyle = {

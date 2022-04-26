@@ -26,7 +26,8 @@ export default function (props) {
 
   const style = {
     wordBreak: 'break-word',
-    overflowWrap: 'break-word'
+    overflowWrap: 'break-word',
+    marginLeft: `${(left || 0) * 7}px`
   };
 
   if (align) {
