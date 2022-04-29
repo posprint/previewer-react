@@ -60,7 +60,7 @@ export default class extends Component {
       align,
       fontStyle,
       fontSize,
-      textSpacing,
+      textDecoration,
       color,
       children,
     } = this.props;
@@ -90,7 +90,8 @@ export default class extends Component {
     };
 
     const spanStyle = {
-      display: 'inline-block'
+      display: 'inline-block',
+      textDecoration
     };
 
     if (align) {
