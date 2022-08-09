@@ -2,7 +2,7 @@ import React from 'react';
 import Element from './element';
 
 export default function (props) {
-  const { id, children, selectedSection, onSectionSelect } = props;
+  const { id, children, selectedSection, onSectionSelect, style } = props;
 
   const onSelect = () => {
     console.log('select', id);
@@ -18,6 +18,7 @@ export default function (props) {
       className={'print-section' + (selected ? ' selected' : '')}
       data-section-id={id}
       onClick={onSelect}
+      style={style}
     >
       {children &&
         children.map((node, i) => <Element key={i} isa="esc" node={node} />)}

@@ -45,7 +45,7 @@ export default class Previewer extends Component {
 
     if (isa === 'tsc') {
       Object.assign(style, {
-        padding: '8px',
+        padding: '0 4px',
         lineHeight: '14px',
         fontSize: '12px'
       });

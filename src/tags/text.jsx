@@ -20,7 +20,6 @@ export default class extends Component {
     // 先还原到未缩放状态
     div.style.display = 'block';
     div.style.paddingBottom = '';
-    div.style.width = '100%';
     div.style.transformOrigin = 'left top';
     div.style.transform = '';
 
@@ -63,6 +62,8 @@ export default class extends Component {
       textDecoration,
       color,
       children,
+      wapperStyle,
+      textStyle
     } = this.props;
 
     let text;
@@ -86,12 +87,12 @@ export default class extends Component {
       overflow: 'hidden',
       overflowWrap: 'break-word',
       letterSpacing: '0.1px',
-      marginLeft: `${(left || 0) * 7}px`
+      marginLeft: `${(left || 0) * 7}px`,
     };
 
     const spanStyle = {
       display: 'inline-block',
-      textDecoration
+      textDecoration,
     };
 
     if (align) {
@@ -114,6 +115,9 @@ export default class extends Component {
       spanStyle.backgroundColor = '#000';
       spanStyle.fontWeight = 'bold';
     }
+
+    wapperStyle && Object.assign(style, wapperStyle);
+    textStyle && Object.assign(spanStyle, textStyle);
 
     return (
       <div ref={this.divRef} style={style}>

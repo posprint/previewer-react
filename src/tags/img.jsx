@@ -22,8 +22,12 @@ export default class extends Component {
       const image = new Image();
       image.src = `data:image/${format};base64,${children}`;
       image.onload = () => {
-        let width = image.width > div.offsetWidth ? div.offsetWidth : image.width;
-        div.style.marginTop = `-${width / 2}px`;
+        div.style.marginTop = `-${image.width / 2}px`;
+        if (image.width > div.offsetWidth) {
+          div.style.transformOrigin = 'left bottom';
+        } else {
+          div.style.transformOrigin = 'center bottom';
+        }
       }
     } else {
       div.style.marginTop = '0';
@@ -31,7 +35,7 @@ export default class extends Component {
   }
 
   render () {
-    const { format, height, width, size, align, children } = this.props;
+    const { format, height, width, size, align, children, wapperStyle, imgStyle } = this.props;
 
     const style = {
       textAlign: align,
@@ -49,13 +53,11 @@ export default class extends Component {
       })
     }
 
-    const imgStyle = {
-      maxWidth: '100%',
-    };
+    wapperStyle && Object.assign(style, wapperStyle);
 
     return (
       <div ref={this.divRef} style={style}>
-        <img style={imgStyle} src={`data:image/${format};base64,${children}`} />
+        <img src={`data:image/${format};base64,${children}`} style={imgStyle} />
       </div>
     );
   }
