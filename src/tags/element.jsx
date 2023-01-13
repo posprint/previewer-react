@@ -29,7 +29,8 @@ export default class extends Component {
       separator: Separator,
       qrcode: Qrcode,
       img: Img,
-      section: Section
+      section: Section,
+      table: Table
     },
   };
 

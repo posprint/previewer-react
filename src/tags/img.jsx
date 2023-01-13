@@ -16,13 +16,14 @@ export default class extends Component {
   }
 
   scale() {
-    const { size, children, format } = this.props;
+    const { size, children, format, isa } = this.props;
     const div = this.divRef.current;
+    const ratio = isa === 'tsc' ? 1.34 : 2
     if (size === 'normal') {
       const image = new Image();
       image.src = `data:image/${format};base64,${children}`;
       image.onload = () => {
-        div.style.marginTop = `-${image.width / 2}px`;
+        div.style.marginTop = `-${image.width / ratio}px`;
         if (image.width > div.offsetWidth) {
           div.style.transformOrigin = 'left bottom';
         } else {
@@ -35,16 +36,17 @@ export default class extends Component {
   }
 
   render () {
-    const { format, height, width, size, align, children, wapperStyle, imgStyle } = this.props;
+    const { isa, format, height, width, size, align, children, wapperStyle, imgStyle } = this.props;
 
     const style = {
       textAlign: align,
       transformOrigin: 'center bottom'
     };
 
+    const ratio = isa === 'tsc' ? '0.25' : '0.5'
     if (size === 'normal') {
       Object.assign(style, {
-        transform: 'scale(0.5)'
+        transform: `scale(${ratio})`
       })
     } else {
       Object.assign(style, {

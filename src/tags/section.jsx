@@ -2,7 +2,7 @@ import React from 'react';
 import Element from './element';
 
 export default function (props) {
-  const { id, children, selectedSection, onSectionSelect, style } = props;
+  const { isa, id, children, selectedSection, onSectionSelect, style = {}, width, flex, position } = props;
 
   const onSelect = () => {
     console.log('select', id);
@@ -12,6 +12,19 @@ export default function (props) {
   };
 
   const selected = selectedSection === id;
+  const wapperStyle = {}
+  if (flex) {
+    wapperStyle.display = 'flex';
+    if (position === 'bottom') {
+      wapperStyle.position = 'absolute'
+      wapperStyle.bottom = 0
+      wapperStyle.width = '100%'
+    }
+  }
+  if (width) {
+    wapperStyle.width = `${width * 100}%`;
+  }
+  Object.assign(style, wapperStyle)
 
   return (
     <div
@@ -21,7 +34,7 @@ export default function (props) {
       style={style}
     >
       {children &&
-        children.map((node, i) => <Element key={i} isa="esc" node={node} />)}
+        children.map((node, i) => <Element key={i} isa={isa} node={node} />)}
     </div>
   );
 }
