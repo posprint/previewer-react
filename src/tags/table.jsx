@@ -47,12 +47,12 @@ function Cell(props) {
   }
   const cellProps = Object.assign({ ...rest }, rowProps, tdProps);
 
-  const { width, align, overflow } = cellProps;
+  const { width, align, verticalAlign, overflow } = cellProps;
 
   const style = {
     margin: 0,
     padding: 0,
-    verticalAlign: 'top'
+    verticalAlign: verticalAlign || 'top'
   };
   if (width) {
     style.width = `${width}%`;
@@ -60,6 +60,10 @@ function Cell(props) {
 
   if (align) {
     style.textAlign = align;
+  }
+
+  if (verticalAlign === 'bottom') {
+    style.paddingBottom = '4px'
   }
 
   return (
