@@ -23,7 +23,7 @@ export default class extends Component {
       image.src = `data:image/${format};base64,${children}`;
       image.onload = () => {
         div.style.marginTop = `-${image.width / 2}px`;
-        if (image.width > div.offsetWidth) {
+        if (image.width > div.offsetWidth && isa !== 'tsc') {
           div.style.transformOrigin = 'left bottom';
         } else {
           div.style.transformOrigin = 'center bottom';

@@ -61,7 +61,8 @@ export default class extends Component {
       fontSize,
       textDecoration,
       color,
-      border,
+      borderWidth,
+      borderStyle,
       children,
       wapperStyle,
       textStyle
@@ -106,9 +107,10 @@ export default class extends Component {
       style.lineHeight = size * 1.3 + 'px';
     }
 
-    if (border) {
+    if (borderWidth) {
       spanStyle.padding = '2px';
-      spanStyle.border = `${border}px dashed`;
+      spanStyle.borderWidth = `${borderWidth}px`;
+      spanStyle.borderStyle = `${borderStyle || 'solid'}`;
     }
 
     if (color === 'reverse') {

@@ -15,11 +15,13 @@ export default function (props) {
   const wapperStyle = {}
   if (flex) {
     wapperStyle.display = 'flex';
-    if (position === 'bottom') {
-      wapperStyle.position = 'absolute'
-      wapperStyle.bottom = 0
-      wapperStyle.width = '100%'
-    }
+  }
+  if (position === 'bottom') {
+    wapperStyle.position = 'absolute'
+    wapperStyle.bottom = 0
+    wapperStyle.width = '100%'
+    wapperStyle.paddingRight = '8px'
+    wapperStyle.boxSizing = 'border-box'
   }
   if (width) {
     wapperStyle.width = `${width * 100}%`;
