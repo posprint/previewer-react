@@ -22,6 +22,7 @@ export default class extends Component {
     div.style.paddingBottom = '';
     div.style.transformOrigin = 'left top';
     div.style.transform = '';
+    div.style.width = '100%';
 
     const { fontSize } = this.props;
 
