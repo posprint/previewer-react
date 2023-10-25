@@ -13,12 +13,24 @@ function Row(props) {
       trProps[humps.camelize(key)] = attributes[key];
     });
   }
-  const rowProps = Object.assign({ ...rest }, tableProps, trProps);
+  const rowProps = Object.assign({ ...rest }, tableProps, trProps, { id: null });
 
   const { widths, aligns, overflows } = rowProps;
 
+  const { selectedSection, onSectionSelect } = rowProps;
+  const { id } = trProps;
+  const onSelect = (e) => {
+    e.stopPropagation();
+    console.log('select tr', id);
+    if (onSectionSelect) {
+      onSectionSelect(id);
+    }
+  };
+
+  const selected = selectedSection === id;
+
   return (
-    <tr>
+    <tr className={selected ? 'selected' : ''} onClick={!!id ? onSelect : null}>
       {children &&
         typeof children.map === 'function' &&
         children.map((td, i) => (
@@ -47,7 +59,7 @@ function Cell(props) {
   }
   const cellProps = Object.assign({ ...rest }, rowProps, tdProps);
 
-  const { width, align, verticalAlign, overflow } = cellProps;
+  const { width, align, verticalAlign, overflow, selectedSection, onSectionSelect } = cellProps;
 
   const style = {
     margin: 0,
@@ -81,6 +93,8 @@ export default function (props) {
     tableLayout: 'fixed',
     borderSpacing: 0,
     borderCollapse: 'collapse',
+    position: 'relative',
+    zIndex: 1
   };
 
   let widths = [];
@@ -100,8 +114,19 @@ export default function (props) {
     overflows = columnsOverflow.split(',');
   }
 
+  const { id, selectedSection, onSectionSelect } = props;
+  const onSelect = (e) => {
+    e.stopPropagation();
+    console.log('select table', id);
+    if (onSectionSelect) {
+      onSectionSelect(id);
+    }
+  };
+
+  const selected = selectedSection === id;
+
   return (
-    <table style={style}>
+    <table style={style} className={selected ? 'selected' : ''} onClick={!!id ? onSelect : null}>
       <tbody>
         {children &&
           typeof children.map === 'function' &&

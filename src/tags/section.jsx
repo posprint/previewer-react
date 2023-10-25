@@ -36,7 +36,7 @@ export default function (props) {
       style={sectionStyle}
     >
       {children &&
-        children.map((node, i) => <Element key={i} isa={isa} node={node} />)}
+        children.map((node, i) => <Element key={i} isa={isa} node={node} selectedSection={selectedSection} onSectionSelect={onSectionSelect} />)}
     </div>
   );
 }

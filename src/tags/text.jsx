@@ -23,6 +23,8 @@ export default class extends Component {
     div.style.transformOrigin = 'left top';
     div.style.transform = '';
     div.style.width = '100%';
+    div.style.position = 'relative';
+    div.style.zIndex = 1;
 
     const { fontSize } = this.props;
 
@@ -33,6 +35,7 @@ export default class extends Component {
           // 设定宽度
           div.style.width = '50%';
           div.style.transform += ' scaleX(2)';
+          div.style.zIndex = 0;
           break;
         default:
           break;
@@ -45,6 +48,7 @@ export default class extends Component {
           div.style.paddingBottom = `${div.offsetHeight}px`;
           div.style.transform += ' scaleY(2)';
           div.style.lineHeight = '14px';
+          div.style.zIndex = 0;
           break;
         default:
           break;
@@ -66,7 +70,8 @@ export default class extends Component {
       borderStyle,
       children,
       wapperStyle,
-      textStyle
+      textStyle,
+      reverseRange
     } = this.props;
 
     let text;
@@ -114,12 +119,12 @@ export default class extends Component {
       spanStyle.borderStyle = `${borderStyle || 'solid'}`;
     }
 
-    if (color === 'reverse') {
+    if (color === 'reverse' || color === 'red-reverse') {
       spanStyle.width = '100%';
       spanStyle.color = '#fff';
       spanStyle.backgroundColor = '#000';
       spanStyle.fontWeight = 'bold';
-    } else if (color === 'reverse-block') {
+    } else if (color === 'reverse-block' || color === 'red-reverse-block') {
       spanStyle.color = '#fff';
       spanStyle.backgroundColor = '#000';
       spanStyle.fontWeight = 'bold';
@@ -127,9 +132,31 @@ export default class extends Component {
 
     wapperStyle && Object.assign(style, wapperStyle);
     textStyle && Object.assign(spanStyle, textStyle);
+    if (reverseRange && Array.isArray(reverseRange)) {
+      const [start, end] =  reverseRange
+      const tempText = text;
+      text = '';
+      if (start !== 0) {
+        text += tempText.substr(0, start);
+      }
+      text += `<span style="background-color: #000;color:#fff">${tempText.substr(start, end)}</span>`;
+      text += tempText.substr(end, tempText.length);
+    }
+
+    const { id, selectedSection, onSectionSelect } = this.props;
+    const onSelect = (e) => {
+      e.stopPropagation();
+      console.log('select text', id);
+      if (onSectionSelect) {
+        onSectionSelect(id);
+      }
+    };
+
+
+    const selected = selectedSection === id;
 
     return (
-      <div ref={this.divRef} style={style}>
+      <div ref={this.divRef} style={style} className={selected ? 'selected' : ''} onClick={!!id ? onSelect : null}>
         <span style={spanStyle} dangerouslySetInnerHTML={{ __html: text }} />
       </div>
     );

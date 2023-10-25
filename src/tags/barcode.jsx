@@ -16,14 +16,20 @@ export default class extends Component {
 
   generate () {
     try {
-      const { type = '', children, width, height } = this.props;
+      const { type = '', children, width, height, color } = this.props;
+      let colorValue;
+      if ( color && color.indexOf('-') > -1) {
+        colorValue = color.split('-')[1].replace('#', '');
+      }
       bwipjs.toCanvas('barcode-canvas', {
         bcid: type.toLowerCase() || 'code128',
         text: children,
         scale: parseInt(width) || 1,
         height: parseInt(height) || 10,
         includetext: true,
-        textxalign: 'center'
+        textxalign: 'center',
+        barcolor: colorValue,
+        textcolor: colorValue
       });
     } catch (e) {
        console.error(e.message);

@@ -34,6 +34,7 @@ export default class extends Component {
     }
   }
 
+
   render () {
     const { isa, format, height, width, size, align, children, wapperStyle, imgStyle } = this.props;
 
@@ -55,8 +56,19 @@ export default class extends Component {
 
     wapperStyle && Object.assign(style, wapperStyle);
 
+    const { id, selectedSection, onSectionSelect } = this.props;
+    const onSelect = (e) => {
+      e.stopPropagation();
+      console.log('select img', id);
+      if (onSectionSelect) {
+        onSectionSelect(id);
+      }
+    };
+
+    const selected = selectedSection === id;
+
     return (
-      <div ref={this.divRef} style={style}>
+      <div ref={this.divRef} style={style} className={selected ? 'selected' : ''} onClick={!!id ? onSelect : null}>
         <img src={`data:image/${format};base64,${children}`} style={imgStyle} />
       </div>
     );
