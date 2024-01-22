@@ -23,14 +23,19 @@ export default class extends Component {
       image.src = `data:image/${format};base64,${children}`;
       image.onload = () => {
         div.style.marginTop = `-${image.height / 2}px`;
-        if (image.width > div.offsetWidth && isa !== 'tsc') {
-          div.style.transformOrigin = 'left bottom';
+        div.style.marginLeft = '0';
+        if (div.offsetWidth < image.width && isa !== 'tsc') {
+            div.style.transformOrigin = 'left bottom';
+            let marginLeft = (div.offsetWidth - (image.width / 2)) / 2
+            div.style.marginLeft = `${marginLeft}px`
         } else {
           div.style.transformOrigin = 'center bottom';
+          div.style.marginLeft = '0';
         }
       }
     } else {
       div.style.marginTop = '0';
+      div.style.marginLeft = '0';
     }
   }
 
